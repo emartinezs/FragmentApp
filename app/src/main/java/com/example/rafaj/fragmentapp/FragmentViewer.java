@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,20 +15,21 @@ import android.widget.Toast;
 
 public class FragmentViewer extends Fragment {
     TextView text;
+    ImageView image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.viewer_fragment, container, false);
 
         text = view.findViewById(R.id.textId);
+        image = view.findViewById(R.id.planetImageView);
         Bundle bundle = this.getArguments();
 
 
         if(bundle != null){
-            Toast.makeText(getActivity(), "Item: " + bundle.getString("KEY"), Toast.LENGTH_SHORT).show();
-
-            text.setText(bundle.getString("KEY"));
-
+            Planet planet = (Planet)bundle.getSerializable("PLANET");
+            Toast.makeText(getActivity(), "Item: " + planet.getName(), Toast.LENGTH_SHORT).show();
+            text.setText(planet.getName());
         }
 
         return view;

@@ -28,10 +28,11 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     private void handleReceivedText(Intent intent){
-        String intentText = intent.getStringExtra(Intent.EXTRA_TEXT);
+        //String intentText = intent.getStringExtra(Intent.EXTRA_TEXT);
+        Planet planet = (Planet)intent.getSerializableExtra("PLANET");
 
         if (text != null){
-            text.setText(intentText);
+            text.setText(planet.getName());
         }
     }
 }
