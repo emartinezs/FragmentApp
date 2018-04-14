@@ -30,6 +30,7 @@ public class FragmentViewer extends Fragment {
             Planet planet = (Planet)bundle.getSerializable("PLANET");
             Toast.makeText(getActivity(), "Item: " + planet.getName(), Toast.LENGTH_SHORT).show();
             text.setText(planet.getName());
+            image.setImageResource(planet.getImageID());
         }
 
         return view;
